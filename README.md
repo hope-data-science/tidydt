@@ -57,8 +57,7 @@ iris %>%
 
 ## Future plans
 
-1. `unnest_dt` is now fast enough to beat the `tidyr::unnest`, but the `nest_dt` function would build a nested data.table with `data.table` inside. How to use such data structure is remained to be seen, and the performance is still to be explored.
-2. `tidydt` currently do not have `group_by`, but the `summarise_dt` has a "by" parameter to state the group. This might be good enough for many tasks, let me know if you need to do a frequent task by group. Because `tidydt` aims at processing big data, maybe I'll include parallel computing in the future.
+`unnest_dt` is now fast enough to beat the `tidyr::unnest`, but the `nest_dt` function would build a nested data.table with `data.table` inside. How to use such data structure is remained to be seen, and the performance is still to be explored.
 
 
 
