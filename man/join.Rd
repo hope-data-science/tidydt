@@ -45,6 +45,9 @@ Join operations..
 }
 \examples{
 # use the examples from `maditr` package
+library(data.table)
+library(tidydt)
+
 workers = fread("
     name company
     Nick Acme

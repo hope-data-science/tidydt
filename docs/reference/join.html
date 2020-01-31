@@ -92,6 +92,18 @@
 <li>
   <a href="../reference/index.html">Reference</a>
 </li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    Articles
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="../articles/example1_intro.html">Eample1: Basic usage</a>
+    </li>
+  </ul>
+</li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li>
@@ -171,25 +183,51 @@ character vector of length 2.</p></td>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='co'># use the examples from `maditr` package</span>
-<span class='no'>workers</span> <span class='kw'>=</span> <span class='fu'>fread</span>(<span class='st'>"
+<span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='no'>data.table</span>)
+<span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='no'>tidydt</span>)
+
+<span class='no'>workers</span> <span class='kw'>=</span> <span class='fu'><a href='https://Rdatatable.gitlab.io/data.table/reference/fread.html'>fread</a></span>(<span class='st'>"
     name company
     Nick Acme
     John Ajax
     Daniela Ajax
-"</span>)</div><div class='output co'>#&gt; <span class='error'>Error in fread("\n    name company\n    Nick Acme\n    John Ajax\n    Daniela Ajax\n"): could not find function "fread"</span></div><div class='input'>
-<span class='no'>positions</span> <span class='kw'>=</span> <span class='fu'>fread</span>(<span class='st'>"
+"</span>)
+
+<span class='no'>positions</span> <span class='kw'>=</span> <span class='fu'><a href='https://Rdatatable.gitlab.io/data.table/reference/fread.html'>fread</a></span>(<span class='st'>"
     name position
     John designer
     Daniela engineer
     Cathie manager
-"</span>)</div><div class='output co'>#&gt; <span class='error'>Error in fread("\n    name position\n    John designer\n    Daniela engineer\n    Cathie manager\n"): could not find function "fread"</span></div><div class='input'>
-<span class='no'>workers</span> <span class='kw'>%&gt;%</span> <span class='fu'>inner_join_dt</span>(<span class='no'>positions</span>)</div><div class='output co'>#&gt; <span class='error'>Error in eval(lhs, parent, parent): object 'workers' not found</span></div><div class='input'><span class='no'>workers</span> <span class='kw'>%&gt;%</span> <span class='fu'>left_join_dt</span>(<span class='no'>positions</span>)</div><div class='output co'>#&gt; <span class='error'>Error in eval(lhs, parent, parent): object 'workers' not found</span></div><div class='input'><span class='no'>workers</span> <span class='kw'>%&gt;%</span> <span class='fu'>right_join_dt</span>(<span class='no'>positions</span>)</div><div class='output co'>#&gt; <span class='error'>Error in eval(lhs, parent, parent): object 'workers' not found</span></div><div class='input'><span class='no'>workers</span> <span class='kw'>%&gt;%</span> <span class='fu'>full_join_dt</span>(<span class='no'>positions</span>)</div><div class='output co'>#&gt; <span class='error'>Error in eval(lhs, parent, parent): object 'workers' not found</span></div><div class='input'>
+"</span>)
+
+<span class='no'>workers</span> <span class='kw'>%&gt;%</span> <span class='fu'>inner_join_dt</span>(<span class='no'>positions</span>)</div><div class='output co'>#&gt; Joining by: name</div><div class='output co'>#&gt;       name company position
+#&gt; 1: Daniela    Ajax engineer
+#&gt; 2:    John    Ajax designer</div><div class='input'><span class='no'>workers</span> <span class='kw'>%&gt;%</span> <span class='fu'>left_join_dt</span>(<span class='no'>positions</span>)</div><div class='output co'>#&gt; Joining by: name</div><div class='output co'>#&gt;       name company position
+#&gt; 1: Daniela    Ajax engineer
+#&gt; 2:    John    Ajax designer
+#&gt; 3:    Nick    Acme     &lt;NA&gt;</div><div class='input'><span class='no'>workers</span> <span class='kw'>%&gt;%</span> <span class='fu'>right_join_dt</span>(<span class='no'>positions</span>)</div><div class='output co'>#&gt; Joining by: name</div><div class='output co'>#&gt;       name company position
+#&gt; 1:  Cathie    &lt;NA&gt;  manager
+#&gt; 2: Daniela    Ajax engineer
+#&gt; 3:    John    Ajax designer</div><div class='input'><span class='no'>workers</span> <span class='kw'>%&gt;%</span> <span class='fu'>full_join_dt</span>(<span class='no'>positions</span>)</div><div class='output co'>#&gt; Joining by: name</div><div class='output co'>#&gt;       name company position
+#&gt; 1:  Cathie    &lt;NA&gt;  manager
+#&gt; 2: Daniela    Ajax engineer
+#&gt; 3:    John    Ajax designer
+#&gt; 4:    Nick    Acme     &lt;NA&gt;</div><div class='input'>
 <span class='co'># filtering joins</span>
-<span class='no'>workers</span> <span class='kw'>%&gt;%</span> <span class='fu'>anti_join_dt</span>(<span class='no'>positions</span>)</div><div class='output co'>#&gt; <span class='error'>Error in eval(lhs, parent, parent): object 'workers' not found</span></div><div class='input'><span class='no'>workers</span> <span class='kw'>%&gt;%</span> <span class='fu'>semi_join_dt</span>(<span class='no'>positions</span>)</div><div class='output co'>#&gt; <span class='error'>Error in eval(lhs, parent, parent): object 'workers' not found</span></div><div class='input'>
+<span class='no'>workers</span> <span class='kw'>%&gt;%</span> <span class='fu'>anti_join_dt</span>(<span class='no'>positions</span>)</div><div class='output co'>#&gt; Joining by: name</div><div class='output co'>#&gt;    name company
+#&gt; 1: Nick    Acme</div><div class='input'><span class='no'>workers</span> <span class='kw'>%&gt;%</span> <span class='fu'>semi_join_dt</span>(<span class='no'>positions</span>)</div><div class='output co'>#&gt; Joining by: name</div><div class='output co'>#&gt;       name company
+#&gt; 1: Daniela    Ajax
+#&gt; 2:    John    Ajax</div><div class='input'>
 <span class='co'># To suppress the message, supply 'by' argument</span>
-<span class='no'>workers</span> <span class='kw'>%&gt;%</span> <span class='fu'>left_join_dt</span>(<span class='no'>positions</span>, <span class='kw'>by</span> <span class='kw'>=</span> <span class='st'>"name"</span>)</div><div class='output co'>#&gt; <span class='error'>Error in eval(lhs, parent, parent): object 'workers' not found</span></div><div class='input'>
+<span class='no'>workers</span> <span class='kw'>%&gt;%</span> <span class='fu'>left_join_dt</span>(<span class='no'>positions</span>, <span class='kw'>by</span> <span class='kw'>=</span> <span class='st'>"name"</span>)</div><div class='output co'>#&gt;       name company position
+#&gt; 1: Daniela    Ajax engineer
+#&gt; 2:    John    Ajax designer
+#&gt; 3:    Nick    Acme     &lt;NA&gt;</div><div class='input'>
 <span class='co'># Use a named 'by' if the join variables have different names</span>
-<span class='no'>positions2</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/stats/setNames.html'>setNames</a></span>(<span class='no'>positions</span>, <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"worker"</span>, <span class='st'>"position"</span>)) <span class='co'># rename first column in 'positions'</span></div><div class='output co'>#&gt; <span class='error'>Error in setNames(positions, c("worker", "position")): object 'positions' not found</span></div><div class='input'><span class='no'>workers</span> <span class='kw'>%&gt;%</span> <span class='fu'>inner_join_dt</span>(<span class='no'>positions2</span>, <span class='kw'>by</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"name"</span> <span class='kw'>=</span> <span class='st'>"worker"</span>))</div><div class='output co'>#&gt; <span class='error'>Error in eval(lhs, parent, parent): object 'workers' not found</span></div></pre>
+<span class='no'>positions2</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/stats/setNames.html'>setNames</a></span>(<span class='no'>positions</span>, <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"worker"</span>, <span class='st'>"position"</span>)) <span class='co'># rename first column in 'positions'</span>
+<span class='no'>workers</span> <span class='kw'>%&gt;%</span> <span class='fu'>inner_join_dt</span>(<span class='no'>positions2</span>, <span class='kw'>by</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"name"</span> <span class='kw'>=</span> <span class='st'>"worker"</span>))</div><div class='output co'>#&gt;       name company position
+#&gt; 1: Daniela    Ajax engineer
+#&gt; 2:    John    Ajax designer</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>

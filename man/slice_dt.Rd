@@ -9,7 +9,7 @@ slice_dt(data, ...)
 \arguments{
 \item{data}{data.frame}
 
-\item{int_vec}{numeric vector}
+\item{...}{Integer row values.}
 }
 \value{
 data.table

@@ -11,9 +11,6 @@ arrange_dt(data, ...)
 
 \item{...}{List of variables or name-value pairs of summary/modifications
 functions.}
-
-\item{na.last}{logical. FALSE by default. If TRUE, missing values in the data
-are put last; if FALSE, they are put first.}
 }
 \value{
 data.table

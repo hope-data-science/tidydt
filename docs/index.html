@@ -59,6 +59,18 @@
 <li>
   <a href="reference/index.html">Reference</a>
 </li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    Articles
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+<li>
+      <a href="articles/example1_intro.html">Eample1: Basic usage</a>
+    </li>
+  </ul>
+</li>
       </ul>
 <ul class="nav navbar-nav navbar-right">
 <li>
@@ -83,7 +95,7 @@
 <div class="page-header"><h1 class="hasAnchor">
 <a href="#tidydt-tidy-verbs-for-datatable" class="anchor"></a>tidydt: Tidy Verbs for <code>data.table</code><img src="reference/figures/logo.png" align="right" alt="" width="120">
 </h1></div>
-<p><a href="https://cran.r-project.org/package=akc"><img src="https://www.r-pkg.org/badges/version/tidydt?color=orange"></a> <img src="http://cranlogs.r-pkg.org/badges/grand-total/tidydt?color=green"><a href="https://github.com/hope-data-science/tidydt"><img src="https://img.shields.io/badge/devel%20version-0.3.0-blue.svg"></a> <img src="https://img.shields.io/badge/lifecycle-maturing-blue.svg"><img src="https://img.shields.io/badge/last%20update-2020--01--31-yellowgreen.svg" alt="Last-changedate"></p>
+<p><a href="https://cran.r-project.org/package=akc"><img src="https://www.r-pkg.org/badges/version/tidydt?color=orange"></a> <img src="http://cranlogs.r-pkg.org/badges/grand-total/tidydt?color=green"><a href="https://github.com/hope-data-science/tidydt"><img src="https://img.shields.io/badge/devel%20version-0.3.0-blue.svg"></a> <img src="https://img.shields.io/badge/lifecycle-maturing-blue.svg"><img src="https://img.shields.io/badge/last%20update-2020--02--01-yellowgreen.svg" alt="Last-changedate"></p>
 <div id="overview" class="section level2">
 <h2 class="hasAnchor">
 <a href="#overview" class="anchor"></a>Overview</h2>
@@ -113,7 +125,7 @@
 <div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" title="1"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(tidydt)</a>
 <a class="sourceLine" id="cb2-2" title="2"></a>
 <a class="sourceLine" id="cb2-3" title="3">iris <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb2-4" title="4"><span class="st">  </span><span class="kw"><a href="reference/mutate_dt.html">mutate_dt</a></span>(<span class="dt">group =</span> Species,<span class="dt">sl =</span> Sepal.Length,<span class="dt">sw =</span> Sepal.Width) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb2-4" title="4"><span class="st">  </span><span class="kw"><a href="reference/mutate.html">mutate_dt</a></span>(<span class="dt">group =</span> Species,<span class="dt">sl =</span> Sepal.Length,<span class="dt">sw =</span> Sepal.Width) <span class="op">%&gt;%</span></a>
 <a class="sourceLine" id="cb2-5" title="5"><span class="st">  </span><span class="kw"><a href="reference/select_dt.html">select_dt</a></span>(group,sl,sw) <span class="op">%&gt;%</span></a>
 <a class="sourceLine" id="cb2-6" title="6"><span class="st">  </span><span class="kw"><a href="reference/filter_dt.html">filter_dt</a></span>(sl <span class="op">&gt;</span><span class="st"> </span><span class="dv">5</span>) <span class="op">%&gt;%</span></a>
 <a class="sourceLine" id="cb2-7" title="7"><span class="st">  </span><span class="kw"><a href="reference/arrange_dt.html">arrange_dt</a></span>(group,sl) <span class="op">%&gt;%</span></a>
@@ -127,12 +139,7 @@
 <div id="future-plans" class="section level2">
 <h2 class="hasAnchor">
 <a href="#future-plans" class="anchor"></a>Future plans</h2>
-<ol>
-<li>
-<code>unnest_dt</code> is now fast enough to beat the <code><a href="https://tidyr.tidyverse.org/reference/nest.html">tidyr::unnest</a></code>, but the <code>nest_dt</code> function would build a nested data.table with <code>data.table</code> inside. How to use such data structure is remained to be seen, and the performance is still to be explored.</li>
-<li>
-<code>tidydt</code> currently do not have <code>group_by</code>, but the <code>summarise_dt</code> has a “by” parameter to state the group. This might be good enough for many tasks, let me know if you need to do a frequent task by group. Because <code>tidydt</code> aims at processing big data, maybe I’ll include parallel computing in the future.</li>
-</ol>
+<p><code>unnest_dt</code> is now fast enough to beat the <code><a href="https://tidyr.tidyverse.org/reference/nest.html">tidyr::unnest</a></code>, but the <code>nest_dt</code> function would build a nested data.table with <code>data.table</code> inside. How to use such data structure is remained to be seen, and the performance is still to be explored.</p>
 </div>
 <div id="related-work" class="section level2">
 <h2 class="hasAnchor">

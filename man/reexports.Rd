@@ -4,6 +4,11 @@
 \name{reexports}
 \alias{reexports}
 \alias{\%>\%}
+\alias{data.table}
+\alias{as.data.table}
+\alias{fread}
+\alias{fwrite}
+\alias{uniqueN}
 \title{Objects exported from other packages}
 \keyword{internal}
 \description{
@@ -11,6 +16,8 @@ These objects are imported from other packages. Follow the links
 below to see their documentation.
 
 \describe{
+  \item{data.table}{\code{\link[data.table]{as.data.table}}, \code{\link[data.table]{data.table}}, \code{\link[data.table]{fread}}, \code{\link[data.table]{fwrite}}, \code{\link[data.table]{uniqueN}}}
+
   \item{stringr}{\code{\link[stringr]{\%>\%}}}
 }}
 

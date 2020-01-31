@@ -11,6 +11,8 @@ select_dt(data, ..., cols = NULL)
 
 \item{...}{List of variables or name-value pairs of summary/modifications
 functions.}
+
+\item{cols}{(Optional)A numeric or character vector.}
 }
 \value{
 data.table
