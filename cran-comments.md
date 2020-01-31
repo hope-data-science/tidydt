@@ -1,4 +1,7 @@
 
+## 0.3.1
+Fix some bugs and add a vignette.
+
 ## 0.3.0
 Rewrite all functions and use only `data.table` and `stringr` as imported packages.
 Have changed the license to MIT.

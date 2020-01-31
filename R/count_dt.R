@@ -34,3 +34,5 @@ add_count_dt = function(data,...,name = "n"){
   if(name != "n")  setnames(dt,old = "n",new = name)
   as.data.table(dt)
 }
+
+globalVariables(c("n"))

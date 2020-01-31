@@ -61,7 +61,7 @@ select_fst = function(ft,...){
   else if(str_detect(dot_string,",")){
     dot_string %>%
       str_split(",",simplify = TRUE) %>%
-      str_squish() %>%
+      str_trim() %>%
       str_c("'",.,"'") %>%
       str_c(collapse = ",") %>%
       str_c("c(",.,")") -> dot_string

@@ -4,8 +4,6 @@
 #' @param data data.frame
 #' @param ... List of variables or name-value pairs of summary/modifications
 #'   functions.
-#' @param na.last logical. FALSE by default. If TRUE, missing values in the data
-#'   are put last; if FALSE, they are put first.
 #' @return data.table
 #' @seealso \code{\link[dplyr]{arrange}},\code{\link[maditr]{dt_arrange}}
 #' @examples

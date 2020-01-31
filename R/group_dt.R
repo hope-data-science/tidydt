@@ -31,6 +31,8 @@ group_dt = function(data,by = NULL,...){
   by = substitute(by)
   substitute(list(...)) %>%
     deparse() %>%
+    str_c(collapse = "") %>%
+   # str_squish() %>%
     str_extract("\\(.+\\)") %>%
     str_sub(2,-2) -> dot_string
   if(deparse(by) == "NULL") stop("Please provide the group(s).")
@@ -43,6 +45,7 @@ group_dt = function(data,by = NULL,...){
     eval(parse(text = str_glue("dt[,(.SD %>% {dot_string}),by = {by}]")))
   }
 }
+
 
 ## general
 as_dt = function(data){

@@ -18,6 +18,9 @@
 #' @seealso \code{\link[dplyr]{left_join}}
 #' @examples
 #' # use the examples from `maditr` package
+#' library(data.table)
+#' library(tidydt)
+#'
 #' workers = fread("
 #'     name company
 #'     Nick Acme
@@ -111,7 +114,7 @@ anti_join_dt = function(x,y,by = NULL){
   dt1 = as_dt(x)
   dt2 = as_dt(y)
   x_names = names(dt1)
-  both_have = inner_join_dt(dt1,dt2,by)[,..x_names]
+  both_have = inner_join_dt(dt1,dt2,by) %>% select_dt(cols = x_names)
   fsetdiff(dt1,both_have)
 }
 
@@ -121,7 +124,7 @@ semi_join_dt = function(x,y,by = NULL){
   dt1 = as_dt(x)
   dt2 = as_dt(y)
   x_names = names(dt1)
-  both_have = inner_join_dt(dt1,dt2,by)[,..x_names]
+  both_have = inner_join_dt(dt1,dt2,by) %>% select_dt(cols = x_names)
   fintersect(dt1,both_have)
 }
 

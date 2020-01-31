@@ -4,6 +4,7 @@
 #' @param data data.frame
 #' @param ... List of variables or name-value pairs of summary/modifications
 #'   functions.
+#' @param cols (Optional)A numeric or character vector.
 #' @return data.table
 #' @seealso \code{\link[dplyr]{select}}
 #' @examples

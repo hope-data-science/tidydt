@@ -2,7 +2,7 @@
 #' @title Slice rows in data.frame
 #' @description Analogous function for \code{slice} in \pkg{dplyr}
 #' @param data data.frame
-#' @param int_vec numeric vector
+#' @param ... Integer row values.
 #' @return data.table
 #' @seealso \code{\link[dplyr]{slice}}
 #' @examples

@@ -14,7 +14,7 @@
 #' @examples
 #' iris %>% distinct_dt()
 #' iris %>% distinct_dt(Species)
-#' iris %>% distinct_dt(Species,.keep_all = T)
+#' iris %>% distinct_dt(Species,.keep_all = TRUE)
 #' mtcars %>% distinct_dt(cyl,vs)
 #' mtcars %>% distinct_dt(cyl,vs,.keep_all = TRUE)
 #'
