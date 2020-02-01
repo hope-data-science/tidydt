@@ -58,6 +58,17 @@ mtcars %>%
 #> 2:  1  1 28.37143
 #> 3:  1  0 20.74286
 #> 4:  0  0 15.05000
+
+iris[3:8,] %>%
+  mutate_when(Petal.Width == .2,
+              one = 1,Sepal.Length=2)
+#>    Sepal.Length Sepal.Width Petal.Length Petal.Width Species one
+#> 1:          2.0         3.2          1.3         0.2  setosa   1
+#> 2:          2.0         3.1          1.5         0.2  setosa   1
+#> 3:          2.0         3.6          1.4         0.2  setosa   1
+#> 4:          5.4         3.9          1.7         0.4  setosa  NA
+#> 5:          4.6         3.4          1.4         0.3  setosa  NA
+#> 6:          2.0         3.4          1.5         0.2  setosa   1
 ```
 
 
