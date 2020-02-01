@@ -7,7 +7,7 @@
 \alias{full_join_dt}
 \alias{anti_join_dt}
 \alias{semi_join_dt}
-\title{Count observations by group}
+\title{Join table by common keys}
 \usage{
 left_join_dt(x, y, by = NULL, suffix = c(".x", ".y"))
 
@@ -41,7 +41,7 @@ character vector of length 2.}
 data.table
 }
 \description{
-Join operations..
+Join operations.
 }
 \examples{
 # use the examples from `maditr` package
