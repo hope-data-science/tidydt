@@ -4,6 +4,7 @@
 #' @description An API for reading fst file as data.table.
 #' @param path path to fst file
 #' @param ft An object of class fst_table, returned by \code{parse_fst}
+#' @param row_no An integer vector (Positive)
 #' @param ... The filter conditions
 #' @return \code{parse_fst} returns a fst_table class.
 #' @return \code{select_fst} and \code{filter_fst} returns a data.table.
@@ -14,6 +15,10 @@
 #'
 #' parse_fst("iris_fst_test.fst") -> ft
 #' ft
+#'
+#' ft %>% slice_fst(1:3)
+#' ft %>% slice_fst(c(1,3))
+#'
 #' ft %>% select_fst(Sepal.Length,Sepal.Width) # could not select only one in this way
 #' ft %>% select_fst("Sepal.Length")
 #' ft %>% select_fst(1:3)
@@ -37,6 +42,13 @@ globalVariables(c("."))
 #' @export
 parse_fst = function(path){
   fst(path)
+}
+
+#' @rdname fst
+#' @export
+
+slice_fst = function(ft,row_no){
+  ft[row_no,] %>% as.data.table()
 }
 
 #' @rdname fst
@@ -92,20 +104,5 @@ filter_fst = function(ft,...){
 
 
 
-# expr = substitute(list(Sepal.Length > 6 & Species == "virginica" & Sepal.Width > 3 & Petal.Width >2))
-#
-# expr %>%
-#   deparse() %>%
-#   paste0(collapse = "") %>%
-#   str_extract("(?<=\\().+?(?=\\))") %>%
-#   strsplit(",") %>%
-#   unlist() %>%
-#   trimws()-> dot_string
-# names(ft) -> ft_names
-# ft_names[str_detect(dot_string,ft_names)] -> old
-# paste0("ft$",old) -> new
-# for(i in seq_along(old)) gsub(old[i],new[i],dot_string) -> dot_string
-#
-#
-#
+
 
