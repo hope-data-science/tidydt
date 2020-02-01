@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Count observations by group — left_join_dt • tidydt</title>
+<title>Join table by common keys — left_join_dt • tidydt</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -42,8 +42,8 @@
 
 
 
-<meta property="og:title" content="Count observations by group — left_join_dt" />
-<meta property="og:description" content="Join operations.." />
+<meta property="og:title" content="Join table by common keys — left_join_dt" />
+<meta property="og:description" content="Join operations." />
 <meta property="og:image" content="/logo.png" />
 <meta name="twitter:card" content="summary" />
 
@@ -100,7 +100,13 @@
   </a>
   <ul class="dropdown-menu" role="menu">
     <li>
-      <a href="../articles/example1_intro.html">Eample1: Basic usage</a>
+      <a href="../articles/example1_intro.html">Eample 1: Basic usage</a>
+    </li>
+    <li>
+      <a href="../articles/example2_join.html">Example 2: Join tables</a>
+    </li>
+    <li>
+      <a href="../articles/example3_reshape.html">Example 3: Reshape</a>
     </li>
   </ul>
 </li>
@@ -125,13 +131,13 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Count observations by group</h1>
+    <h1>Join table by common keys</h1>
     <small class="dont-index">Source: <a href='https://github.com/hope-data-science/tidydt/blob/master/R/join_dt.R'><code>R/join_dt.R</code></a></small>
     <div class="hidden name"><code>join.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Join operations..</p>
+    <p>Join operations.</p>
     </div>
 
     <pre class="usage"><span class='fu'>left_join_dt</span>(<span class='no'>x</span>, <span class='no'>y</span>, <span class='kw'>by</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>suffix</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>".x"</span>, <span class='st'>".y"</span>))
@@ -200,22 +206,26 @@ character vector of length 2.</p></td>
     Cathie manager
 "</span>)
 
-<span class='no'>workers</span> <span class='kw'>%&gt;%</span> <span class='fu'>inner_join_dt</span>(<span class='no'>positions</span>)</div><div class='output co'>#&gt; Joining by: name</div><div class='output co'>#&gt;       name company position
+<span class='no'>workers</span> <span class='kw'>%&gt;%</span> <span class='fu'>inner_join_dt</span>(<span class='no'>positions</span>)</div><div class='output co'>#&gt; Joining by: name
+#&gt; </div><div class='output co'>#&gt;       name company position
 #&gt; 1: Daniela    Ajax engineer
-#&gt; 2:    John    Ajax designer</div><div class='input'><span class='no'>workers</span> <span class='kw'>%&gt;%</span> <span class='fu'>left_join_dt</span>(<span class='no'>positions</span>)</div><div class='output co'>#&gt; Joining by: name</div><div class='output co'>#&gt;       name company position
+#&gt; 2:    John    Ajax designer</div><div class='input'><span class='no'>workers</span> <span class='kw'>%&gt;%</span> <span class='fu'>left_join_dt</span>(<span class='no'>positions</span>)</div><div class='output co'>#&gt; Joining by: name
+#&gt; </div><div class='output co'>#&gt;       name company position
 #&gt; 1: Daniela    Ajax engineer
 #&gt; 2:    John    Ajax designer
-#&gt; 3:    Nick    Acme     &lt;NA&gt;</div><div class='input'><span class='no'>workers</span> <span class='kw'>%&gt;%</span> <span class='fu'>right_join_dt</span>(<span class='no'>positions</span>)</div><div class='output co'>#&gt; Joining by: name</div><div class='output co'>#&gt;       name company position
+#&gt; 3:    Nick    Acme     &lt;NA&gt;</div><div class='input'><span class='no'>workers</span> <span class='kw'>%&gt;%</span> <span class='fu'>right_join_dt</span>(<span class='no'>positions</span>)</div><div class='output co'>#&gt; Joining by: name
+#&gt; </div><div class='output co'>#&gt;       name company position
 #&gt; 1:  Cathie    &lt;NA&gt;  manager
 #&gt; 2: Daniela    Ajax engineer
-#&gt; 3:    John    Ajax designer</div><div class='input'><span class='no'>workers</span> <span class='kw'>%&gt;%</span> <span class='fu'>full_join_dt</span>(<span class='no'>positions</span>)</div><div class='output co'>#&gt; Joining by: name</div><div class='output co'>#&gt;       name company position
+#&gt; 3:    John    Ajax designer</div><div class='input'><span class='no'>workers</span> <span class='kw'>%&gt;%</span> <span class='fu'>full_join_dt</span>(<span class='no'>positions</span>)</div><div class='output co'>#&gt; Joining by: name
+#&gt; </div><div class='output co'>#&gt;       name company position
 #&gt; 1:  Cathie    &lt;NA&gt;  manager
 #&gt; 2: Daniela    Ajax engineer
 #&gt; 3:    John    Ajax designer
 #&gt; 4:    Nick    Acme     &lt;NA&gt;</div><div class='input'>
 <span class='co'># filtering joins</span>
-<span class='no'>workers</span> <span class='kw'>%&gt;%</span> <span class='fu'>anti_join_dt</span>(<span class='no'>positions</span>)</div><div class='output co'>#&gt; Joining by: name</div><div class='output co'>#&gt;    name company
-#&gt; 1: Nick    Acme</div><div class='input'><span class='no'>workers</span> <span class='kw'>%&gt;%</span> <span class='fu'>semi_join_dt</span>(<span class='no'>positions</span>)</div><div class='output co'>#&gt; Joining by: name</div><div class='output co'>#&gt;       name company
+<span class='no'>workers</span> <span class='kw'>%&gt;%</span> <span class='fu'>anti_join_dt</span>(<span class='no'>positions</span>)</div><div class='output co'>#&gt;    name company
+#&gt; 1: Nick    Acme</div><div class='input'><span class='no'>workers</span> <span class='kw'>%&gt;%</span> <span class='fu'>semi_join_dt</span>(<span class='no'>positions</span>)</div><div class='output co'>#&gt;       name company
 #&gt; 1: Daniela    Ajax
 #&gt; 2:    John    Ajax</div><div class='input'>
 <span class='co'># To suppress the message, supply 'by' argument</span>

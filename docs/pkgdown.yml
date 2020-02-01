@@ -3,4 +3,6 @@ pkgdown: 1.4.1
 pkgdown_sha: ~
 articles:
   example1_intro: example1_intro.html
+  example2_join: example2_join.html
+  example3_reshape: example3_reshape.html
 

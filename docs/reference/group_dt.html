@@ -101,7 +101,13 @@ but in another efficient way." />
   </a>
   <ul class="dropdown-menu" role="menu">
     <li>
-      <a href="../articles/example1_intro.html">Eample1: Basic usage</a>
+      <a href="../articles/example1_intro.html">Eample 1: Basic usage</a>
+    </li>
+    <li>
+      <a href="../articles/example2_join.html">Example 2: Join tables</a>
+    </li>
+    <li>
+      <a href="../articles/example3_reshape.html">Example 3: Reshape</a>
     </li>
   </ul>
 </li>
@@ -189,7 +195,16 @@ but in another efficient way.</p>
 )</div><div class='output co'>#&gt;    cyl     disp        hp
 #&gt; 1:   6 183.3143 122.28571
 #&gt; 2:   4 105.1364  82.63636
-#&gt; 3:   8 353.1000 209.21429</div></pre>
+#&gt; 3:   8 353.1000 209.21429</div><div class='input'>
+ <span class='co'># but you could also, of course, use group_dt</span>
+<span class='no'>mtcars</span> <span class='kw'>%&gt;%</span>
+  <span class='fu'>group_dt</span>(<span class='kw'>by</span> <span class='kw'>=</span><span class='fu'>.</span>(<span class='no'>vs</span>,<span class='no'>am</span>),
+  <span class='fu'><a href='summarise_dt.html'>summarise_dt</a></span>(<span class='kw'>avg</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/mean.html'>mean</a></span>(<span class='no'>mpg</span>)))</div><div class='output co'>#&gt;    vs am      avg
+#&gt; 1:  0  1 19.75000
+#&gt; 2:  1  1 28.37143
+#&gt; 3:  1  0 20.74286
+#&gt; 4:  0  0 15.05000</div><div class='input'>
+</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
