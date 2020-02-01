@@ -1,6 +1,6 @@
 Package: tidydt
 Title: Tidy Verbs for 'data.table'
-Version: 0.3.0
+Version: 0.5.7
 Depends: R (>= 3.3.0)
 Authors@R: 
     person(given = "Tian-Yuan",
@@ -13,8 +13,8 @@ Description: A toolkit of tidy data manipulation verbs with 'data.table' as the 
   'tidydt' intends to provide users with state-of-the-art data manipulation tools with least pain.
   This package is inspired by 'maditr', but follows a different philosophy of design, 
   such as prohibiting in place replacement and used a "_dt" suffix API.
-  Also, 'tidydt' would introduce more tidy data verbs from other packages,
-  including but not limited to `tidyverse` and `data.table`.
+  Also, 'tidydt' would introduce more tidy data verbs from (and for) other packages,
+  including but not limited to 'fst','tidyverse' and 'data.table'.
 License: MIT + file LICENSE
 URL: https://github.com/hope-data-science/tidydt
 Encoding: UTF-8

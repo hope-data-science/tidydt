@@ -1,4 +1,10 @@
 
+## 0.5.7
+1. Support 'fst' package in various ways
+2. Test the functions and get three vignettes for comparison
+3. Totally support group computing with `group_dt` function
+4. Correct various typos in the document
+
 ## 0.3.1
 Fix some bugs and add a vignette.
 
