@@ -52,7 +52,7 @@ iris %>%
 
 mtcars %>%
   group_dt(by =.(vs,am),
-  summarise_dt(avg = mean(mpg)))
+    summarise_dt(avg = mean(mpg)))
 #>    vs am      avg
 #> 1:  0  1 19.75000
 #> 2:  1  1 28.37143
