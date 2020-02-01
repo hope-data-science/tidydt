@@ -8,7 +8,7 @@
 
 ## Overview
 
-*tidydt* is a toolkit of tidy data manipulation verbs with *data.table* as the backend . Combines the merits of syntax elegance from *dplyr* and computing performance from *data.table*,  *tidydt* intends to provide users with state-of-the-art data manipulation tools with least pain. This package is inspired by *maditr*, but follows a different philosophy of design,  such as prohibiting in place replacement and used a "_dt" suffix API. Also, *tidydt* would introduce more tidy data verbs from other packages, including but not limited to *tidyverse* and *data.table*. If you are a *dplyr* user but have to use *data.table* for speedy computation,  or *data.table* user looking for readable coding syntax, *tidydt* is designed for you (and me of course).
+*tidydt* is a toolkit of tidy data manipulation verbs with *data.table* as the backend . Combines the merits of syntax elegance from *dplyr* and computing performance from *data.table*,  *tidydt* intends to provide users with state-of-the-art data manipulation tools with least pain. This package is inspired by *maditr*, but follows a different philosophy of design,  such as prohibiting in place replacement and used a "_dt" suffix API. Also, *tidydt* would introduce more tidy data verbs from other packages, including but not limited to *tidyverse* and *data.table*. If you are a *dplyr* user but have to use *data.table* for speedy computation,  or *data.table* user looking for readable coding syntax, *tidydt* is designed for you (and me of course). For further details and tutorials, see [vignettes](https://hope-data-science.github.io/tidydt/).
 
 Enjoy the data science in *tidydt* !
 
