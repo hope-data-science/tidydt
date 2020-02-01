@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Read and write fst files. — import_fst • tidydt</title>
+<title>Read and write fst files — export_fst • tidydt</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -42,7 +42,7 @@
 
 
 
-<meta property="og:title" content="Read and write fst files. — import_fst" />
+<meta property="og:title" content="Read and write fst files — export_fst" />
 <meta property="og:description" content="Wrapper for read_fst and write_fst
 from fst, but use a different default. For data import, always return a data.table.
 For data export, always compress the data to the smallest size." />
@@ -79,7 +79,7 @@ For data export, always compress the data to the smallest size." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">tidydt</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.3.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.5.7</span>
       </span>
     </div>
 
@@ -133,7 +133,7 @@ For data export, always compress the data to the smallest size." />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Read and write fst files.</h1>
+    <h1>Read and write fst files</h1>
     <small class="dont-index">Source: <a href='https://github.com/hope-data-science/tidydt/blob/master/R/fst_io.R'><code>R/fst_io.R</code></a></small>
     <div class="hidden name"><code>fst_io.Rd</code></div>
     </div>
@@ -144,27 +144,27 @@ from <span class="pkg">fst</span>, but use a different default. For data import,
 For data export, always compress the data to the smallest size.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>import_fst</span>(
+    <pre class="usage"><span class='fu'>export_fst</span>(<span class='no'>x</span>, <span class='no'>path</span>, <span class='kw'>compress</span> <span class='kw'>=</span> <span class='fl'>100</span>, <span class='kw'>uniform_encoding</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)
+
+<span class='fu'>import_fst</span>(
   <span class='no'>path</span>,
   <span class='kw'>columns</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
   <span class='kw'>from</span> <span class='kw'>=</span> <span class='fl'>1</span>,
   <span class='kw'>to</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
   <span class='kw'>as.data.table</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
   <span class='kw'>old_format</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>
-)
-
-<span class='fu'>export_fst</span>(<span class='no'>x</span>, <span class='no'>path</span>, <span class='kw'>compress</span> <span class='kw'>=</span> <span class='fl'>100</span>, <span class='kw'>uniform_encoding</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</pre>
+)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>path</th>
-      <td><p>path to fst file</p></td>
-    </tr>
-    <tr>
       <th>x</th>
       <td><p>a data frame to write to disk</p></td>
+    </tr>
+    <tr>
+      <th>path</th>
+      <td><p>path to fst file</p></td>
     </tr>
     <tr>
       <th>compress</th>
@@ -179,6 +179,29 @@ This will be a correct assumption for most use cases.
 If `uniform.encoding` is set to `FALSE`, no such assumption will be made and all elements will be converted
 to the same encoding. The latter is a relatively expensive operation and will reduce write performance for
 character columns.</p></td>
+    </tr>
+    <tr>
+      <th>columns</th>
+      <td><p>Column names to read. The default is to read all columns.</p></td>
+    </tr>
+    <tr>
+      <th>from</th>
+      <td><p>Read data starting from this row number.</p></td>
+    </tr>
+    <tr>
+      <th>to</th>
+      <td><p>Read data up until this row number. The default is to read to the last row of the stored dataset.</p></td>
+    </tr>
+    <tr>
+      <th>as.data.table</th>
+      <td><p>If TRUE, the result will be returned as a <code>data.table</code> object. Any keys set on
+dataset <code>x</code> before writing will be retained. This allows for storage of sorted datasets. This option
+requires <code>data.table</code> package to be installed.</p></td>
+    </tr>
+    <tr>
+      <th>old_format</th>
+      <td><p>must be FALSE, the old fst file format is deprecated and can only be read and
+converted with fst package versions 0.8.0 to 0.8.10.</p></td>
     </tr>
     </table>
 
