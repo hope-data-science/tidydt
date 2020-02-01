@@ -23,6 +23,12 @@
 #'    hp = mean(hp),
 #'    by = cyl
 #' )
+#'
+#'  # but you could also, of course, use group_dt
+#' mtcars %>%
+#'   group_dt(by =.(vs,am),
+#'   summarise_dt(avg = mean(mpg)))
+#'
 
 #' @export
 
@@ -50,6 +56,6 @@ group_dt = function(data,by = NULL,...){
 ## general
 as_dt = function(data){
   if(!is.data.frame(data)) stop("Only a data.frame could be received.")
-  else as.data.table(data)
+  as.data.table(data)
 }
 

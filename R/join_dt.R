@@ -1,6 +1,6 @@
 
-#' @title Count observations by group
-#' @description Join operations..
+#' @title Join table by common keys
+#' @description Join operations.
 #'
 #' @param x data.frame
 #' @param y data.frame
@@ -59,7 +59,7 @@ left_join_dt = function(x,y,by = NULL,suffix = c(".x",".y")){
   dt2 = as_dt(y)
   if(is.null(by)) {
     join_names = intersect(names(dt1),names(dt2)) %>% str_c(collapse = ",")
-    print(str_glue("Joining by: {join_names}\n"))
+    print(str_glue("Joining by: {join_names}\n\n"))
     merge(dt1,dt2,all.x = TRUE,suffixes = suffix)
   }
   else if(is.null(names(by))) merge(dt1,dt2,all.x = TRUE,by = by,suffixes = suffix)
@@ -73,7 +73,7 @@ right_join_dt = function(x,y,by = NULL,suffix = c(".x",".y")){
   dt2 = as_dt(y)
   if(is.null(by)) {
     join_names = intersect(names(dt1),names(dt2)) %>% str_c(collapse = ",")
-    print(str_glue("Joining by: {join_names}\n"))
+    print(str_glue("Joining by: {join_names}\n\n"))
     merge(dt1,dt2,all.y = TRUE,suffixes = suffix)
   }
   else if(is.null(names(by))) merge(dt1,dt2,all.y = TRUE,by = by,suffixes = suffix)
@@ -87,7 +87,7 @@ inner_join_dt = function(x,y,by = NULL,suffix = c(".x",".y")){
   dt2 = as_dt(y)
   if(is.null(by)) {
     join_names = intersect(names(dt1),names(dt2)) %>% str_c(collapse = ",")
-    print(str_glue("Joining by: {join_names}\n"))
+    print(str_glue("Joining by: {join_names}\n\n"))
     merge(dt1,dt2,suffixes = suffix)
   }
   else if(is.null(names(by))) merge(dt1,dt2,by = by,suffixes = suffix)
@@ -101,7 +101,7 @@ full_join_dt = function(x,y,by = NULL,suffix = c(".x",".y")){
   dt2 = as_dt(y)
   if(is.null(by)) {
     join_names = intersect(names(dt1),names(dt2)) %>% str_c(collapse = ",")
-    print(str_glue("Joining by: {join_names}\n"))
+    print(str_glue("Joining by: {join_names}\n\n"))
     merge(dt1,dt2,all = TRUE,suffixes = suffix)
   }
   else if(is.null(names(by))) merge(dt1,dt2,all = TRUE,by = by,suffixes = suffix)
@@ -113,9 +113,17 @@ full_join_dt = function(x,y,by = NULL,suffix = c(".x",".y")){
 anti_join_dt = function(x,y,by = NULL){
   dt1 = as_dt(x)
   dt2 = as_dt(y)
-  x_names = names(dt1)
-  both_have = inner_join_dt(dt1,dt2,by) %>% select_dt(cols = x_names)
-  fsetdiff(dt1,both_have)
+  sel_by = by
+  if(is.null(by)) merge(dt1,dt2)[,1:length(dt1)] %>% fsetdiff(dt1,.)-> res
+  else if(is.null(names(by)))
+    merge(dt1,dt2[,.SD,.SDcols = sel_by],by) %>%
+     setcolorder(names(dt1)) %>%
+     fsetdiff(dt1,.)-> res
+  else
+    merge(dt1,dt2[,.SD,.SDcols = sel_by],by.x = names(by),by.y = by) %>%
+     setcolorder(names(dt1)) %>%
+     fsetdiff(dt1,.)-> res
+  unique(res)
 }
 
 #' @rdname join
@@ -123,9 +131,11 @@ anti_join_dt = function(x,y,by = NULL){
 semi_join_dt = function(x,y,by = NULL){
   dt1 = as_dt(x)
   dt2 = as_dt(y)
-  x_names = names(dt1)
-  both_have = inner_join_dt(dt1,dt2,by) %>% select_dt(cols = x_names)
-  fintersect(dt1,both_have)
+  sel_by = by
+  if(is.null(by)) merge(dt1,dt2)[,1:length(dt1)] -> res
+  else if(is.null(names(by))) merge(dt1,dt2[,.SD,.SDcols = sel_by],by)-> res
+  else merge(dt1,dt2[,.SD,.SDcols = sel_by],by.x = names(by),by.y = by)-> res
+  unique(res)
 }
 
 

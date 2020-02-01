@@ -1,5 +1,5 @@
 ---
-title: "Eample1: Basic usage"
+title: "Eample 1: Basic usage"
 output: rmarkdown::html_vignette
 vignette: >
   %\VignetteIndexEntry{example1_intro}
@@ -113,7 +113,7 @@ flights %>%
   delay = mean(arr_delay, na.rm = TRUE),by = tailnum)
 ```
   `summarise_dt` (or `summarize_dt`) has a parameter "by", you can specify the group.
-  We could use find the number of planes and the number of flights that go to each possible destination:
+  We could find the number of planes and the number of flights that go to each possible destination:
 ```{r}
 # the dplyr syntax:
 # destinations <- group_by(flights, dest)

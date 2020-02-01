@@ -3,10 +3,13 @@
 
 library(pacman)
 p_load(devtools,usethis,roxygen2,pkgdown,badger)
-
-
 p_load(fst,stringr,data.table)
 
+## general
+as_dt = function(data){
+  if(!is.data.frame(data)) stop("Only a data.frame could be received.")
+  as.data.table(data)
+}
 
 # use_r("global_setting")
 # use_r("select_dt")
@@ -27,6 +30,7 @@ submit_cran()
 # https://github.com/GuangchuangYu/badger
 badge_devel("guangchuangyu/ggtree", "blue")
 badge_devel("hope-data-science/tidydt", "blue")
+
 
 
 use_logo(file.choose())

@@ -26,5 +26,7 @@ Imports:
     stringr
 Suggests: 
     knitr,
-    rmarkdown
+    rmarkdown,
+    nycflights13,
+    tidyr
 VignetteBuilder: knitr
