@@ -6,7 +6,7 @@
 \alias{slice_fst}
 \alias{select_fst}
 \alias{filter_fst}
-\title{Parse,inspect and extract `data.table` from `.fst` file}
+\title{Parse,inspect and extract data.table from fst file}
 \usage{
 parse_fst(path)
 

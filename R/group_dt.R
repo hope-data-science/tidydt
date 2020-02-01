@@ -27,7 +27,7 @@
 #'  # but you could also, of course, use group_dt
 #' mtcars %>%
 #'   group_dt(by =.(vs,am),
-#'   summarise_dt(avg = mean(mpg)))
+#'     summarise_dt(avg = mean(mpg)))
 #'
 
 #' @export

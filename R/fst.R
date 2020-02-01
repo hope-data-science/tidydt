@@ -1,5 +1,5 @@
 
-#' @title Parse,inspect and extract `data.table` from `.fst` file
+#' @title Parse,inspect and extract data.table from fst file
 #' @name fst
 #' @description An API for reading fst file as data.table.
 #' @param path path to fst file
