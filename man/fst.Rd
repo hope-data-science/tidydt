@@ -3,11 +3,14 @@
 \name{fst}
 \alias{fst}
 \alias{parse_fst}
+\alias{slice_fst}
 \alias{select_fst}
 \alias{filter_fst}
 \title{Parse,inspect and extract `data.table` from `.fst` file}
 \usage{
 parse_fst(path)
+
+slice_fst(ft, row_no)
 
 select_fst(ft, ...)
 
@@ -17,6 +20,8 @@ filter_fst(ft, ...)
 \item{path}{path to fst file}
 
 \item{ft}{An object of class fst_table, returned by \code{parse_fst}}
+
+\item{row_no}{An integer vector (Positive)}
 
 \item{...}{The filter conditions}
 }
@@ -33,6 +38,10 @@ fst::write_fst(iris,"iris_fst_test.fst")
 
 parse_fst("iris_fst_test.fst") -> ft
 ft
+
+ft \%>\% slice_fst(1:3)
+ft \%>\% slice_fst(c(1,3))
+
 ft \%>\% select_fst(Sepal.Length,Sepal.Width) # could not select only one in this way
 ft \%>\% select_fst("Sepal.Length")
 ft \%>\% select_fst(1:3)
