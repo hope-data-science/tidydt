@@ -84,6 +84,7 @@ iris[3:8,] %>%
 - [maditr](https://github.com/gdemin/maditr)
 - [data.table](https://github.com/Rdatatable/data.table)
 - [dplyr](https://github.com/Rdatatable/data.table)
+- [dtplyr](https://github.com/tidyverse/dtplyr)
 - [table.express](https://github.com/asardaes/table.express)
 - [tidyfast](https://github.com/TysonStanley/tidyfast)
 - [tidytable](https://github.com/markfairbanks/tidytable)
