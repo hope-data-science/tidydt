@@ -3,7 +3,7 @@
 [![](https://www.r-pkg.org/badges/version/tidydt?color=orange)](https://cran.r-project.org/package=akc) ![](http://cranlogs.r-pkg.org/badges/grand-total/tidydt?color=green)  [![](https://img.shields.io/badge/devel%20version-0.5.7-blue.svg)](https://github.com/hope-data-science/tidydt) ![](https://img.shields.io/badge/lifecycle-maturing-blue.svg) ![Last-changedate](https://img.shields.io/badge/last%20update-2020--02--02-yellowgreen.svg)
 
 
-
+## Note: Now tidydt is renamed as tidyfst and the repo is transfered to ![new website](https://github.com/hope-data-science/tidyfst).
 
 
 ## Overview
